@@ -3,6 +3,9 @@ import mediapipe as mp
 import numpy as np
 import pyautogui
 
+#commit test
+#test 2
+
 pyautogui.FAILSAFE=False
 screen_w, screen_h = pyautogui.size()
 mp_hands = mp.solutions.hands
@@ -35,13 +38,8 @@ while cam.isOpened():
             for id,lms in (enumerate(hand_marks.landmark)):
                 h,w,c = img.shape
                 cx,cy = int(lms.x*w), int(lms.y*h)
-                # cx = lms.x
-                # cy = lms.y
                 print(cx,cy)
                 if id == 8:
-                    # index_x = (screen_w/w*cx)
-                    # index_y = (screen_h/h*cy)
-
                     index_x = np.interp(cx,(frameR,wCam-frameR),(0,screen_w))
                     index_y = np.interp(cy,(frameR,hCam-frameR),(0,screen_h))
 
@@ -62,13 +60,6 @@ while cam.isOpened():
                             print("click")
                             pyautogui.click()
                             pyautogui.sleep(1)
-
-
-
-
-
-
-
 
 
     cv2.imshow("image", img)
